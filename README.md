@@ -1,6 +1,6 @@
 # České právnické pluginy pro Claude — AK Mgr. Petr Němec
 
-Čtyři pluginy pro Claude (Cowork / Claude Code), převzaté z právnických pluginů Anthropic a přepsané pro české právo a praxi advokátní kanceláře. Právo, lhůty, registry a vzory podání berou z konektoru **Ingrid Ask**.
+Pět pluginů pro Claude (Cowork / Claude Code), převzaté z právnických pluginů Anthropic a přepsané pro české právo a praxi advokátní kanceláře. Právo, lhůty, registry a vzory podání berou z konektoru **Ingrid Ask**.
 
 > **Každý výstup je návrh pro kontrolu advokátem.** Pluginy nic neodesílají, nepodávají ani nepodepisují. Lhůty jsou vždy označené „návrh — ověří advokát"; rozhodující zůstává lhůtář kanceláře (Praetor).
 
@@ -11,6 +11,7 @@
 | **kancelar-cz** | `nastaveni`, `proverka-subjektu`, `ranni-prehled`, `priprava-schuzky`, `posouzeni-rizik`, `gdpr-zadost` | Základ: profil kanceláře, lustrace ARES/OR/ISIR (+ AML), ranní přehled, schůzky, rizika, žádosti subjektů údajů |
 | **spory-cz** | `nastaveni`, `prijeti-veci`, `lhuty`, `predzalobni-vyzva`, `prijata-vyzva`, `chronologie`, `podani`, `naklady`, `stav-veci` + agent `hlidac-lhut` | Sporová agenda podle o. s. ř. |
 | **smlouvy-cz** | `nastaveni`, `revize-smlouvy`, `nda-triage`, `historie-dodatku`, `hlidani-vypovedi`, `shrnuti-pro-klienta` | Smlouvy podle OZ a playbooku kanceláře |
+| **reserse-cz** | `reserse`, `reserse-k-paragrafu`, `overeni-citaci` | Rešerše podle metodiky Ingrid: vrstvy, právní síla, časová okna, ověření plného textu, judikatura proti, kontrola citací před odesláním |
 | **korporat-cz** | `nastaveni`, `due-diligence`, `rozhodnuti-mimo-vh`, `zapis-z-valne-hromady`, `korporatni-povinnosti`, `closing-checklist` | Korporátní agenda podle ZOK |
 
 Dovednosti se spouští lomítkem, např. `/spory-cz:lhuty`, nebo samy, když o úkol požádáte běžnou větou („přišlo usnesení, do kdy je odvolání?").
@@ -34,6 +35,7 @@ Dovednosti se spouští lomítkem, např. `/spory-cz:lhuty`, nebo samy, když o 
 /plugin install spory-cz@ak-nemec-pravo-cz
 /plugin install smlouvy-cz@ak-nemec-pravo-cz
 /plugin install korporat-cz@ak-nemec-pravo-cz
+/plugin install reserse-cz@ak-nemec-pravo-cz
 ```
 (Repozitář je soukromý — Claude Code musí mít přístup k GitHubu.)
 
@@ -57,6 +59,7 @@ plugins/<plugin>/
   pravidla-a-sablona.md     ← společná pravidla + šablona profilu (každá dovednost ji čte)
   skills/<dovednost>/SKILL.md
   agents/                   ← jen spory-cz (hlídač lhůt)
+plugins/reserse-cz/metodika.md  ← metodika rešerše podle Ingrid (čtou ji dovednosti rešerše)
 ```
 
 ## Licence

@@ -1,0 +1,7 @@
+{
+  "name": "reserse-cz",
+  "version": "0.1.0",
+  "description": "Právní rešerše postavená na metodice Ingrid Ask — vrstvy zákon → judikatura → literatura, právní síla (tier), časová okna 5/10/15/20 let, ověření plného textu, protiargumenty a ověřené citace.",
+  "author": { "name": "AK Mgr. Petr Němec" },
+  "license": "Apache-2.0"
+}
