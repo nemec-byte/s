@@ -1,0 +1,38 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ak-nemec-pravo-cz",
+  "description": "Právnické pluginy pro advokátní kancelář podle českého práva — kancelář, spory, smlouvy, korporátní agenda. Odvozeno z pluginů Anthropic (Apache 2.0) a napojeno na Ingrid Ask.",
+  "owner": {
+    "name": "AK Mgr. Petr Němec"
+  },
+  "plugins": [
+    {
+      "name": "kancelar-cz",
+      "displayName": "Kancelář (CZ)",
+      "source": "./plugins/kancelar-cz",
+      "description": "Nastavení profilu kanceláře, ranní přehled, prověrka subjektu (ARES, OR, ISIR, AML), příprava na schůzku, posouzení rizik a odpověď na žádost subjektu údajů podle GDPR.",
+      "author": { "name": "AK Mgr. Petr Němec" }
+    },
+    {
+      "name": "spory-cz",
+      "displayName": "Spory (CZ)",
+      "source": "./plugins/spory-cz",
+      "description": "Sporová agenda podle o. s. ř.: přijetí věci, předžalobní výzva (§ 142a), přijatá výzva, lhůty z doručených písemností, chronologie, podání podle vzorů kanceláře, náklady řízení a hlídač lhůt.",
+      "author": { "name": "AK Mgr. Petr Němec" }
+    },
+    {
+      "name": "smlouvy-cz",
+      "displayName": "Smlouvy (CZ)",
+      "source": "./plugins/smlouvy-cz",
+      "description": "Revize smluv podle playbooku kanceláře a občanského zákoníku, třídění NDA, historie dodatků, hlídání výpovědních lhůt a shrnutí pro klienta.",
+      "author": { "name": "AK Mgr. Petr Němec" }
+    },
+    {
+      "name": "korporat-cz",
+      "displayName": "Korporát (CZ)",
+      "source": "./plugins/korporat-cz",
+      "description": "Korporátní agenda podle ZOK: due diligence v tabulce s citacemi, rozhodnutí per rollam a jediného společníka, zápis z valné hromady, korporátní povinnosti a closing checklist.",
+      "author": { "name": "AK Mgr. Petr Němec" }
+    }
+  ]
+}

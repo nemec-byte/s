@@ -1,0 +1,7 @@
+{
+  "name": "spory-cz",
+  "version": "0.1.0",
+  "description": "Sporová agenda podle o. s. ř. — přijetí věci, výzvy, lhůty, chronologie, podání, náklady, hlídač lhůt.",
+  "author": { "name": "AK Mgr. Petr Němec" },
+  "license": "Apache-2.0"
+}

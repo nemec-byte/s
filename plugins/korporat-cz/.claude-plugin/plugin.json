@@ -1,0 +1,7 @@
+{
+  "name": "korporat-cz",
+  "version": "0.1.0",
+  "description": "Korporát podle ZOK — due diligence, per rollam, zápisy z VH, korporátní povinnosti, closing.",
+  "author": { "name": "AK Mgr. Petr Němec" },
+  "license": "Apache-2.0"
+}

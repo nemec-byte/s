@@ -1,0 +1,7 @@
+{
+  "name": "smlouvy-cz",
+  "version": "0.1.0",
+  "description": "Smlouvy podle OZ — revize podle playbooku, NDA, dodatky, výpovědní lhůty, shrnutí pro klienta.",
+  "author": { "name": "AK Mgr. Petr Němec" },
+  "license": "Apache-2.0"
+}

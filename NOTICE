@@ -1,0 +1,12 @@
+Pluginy v tomto repozitáři jsou odvozeným dílem pluginů společnosti Anthropic:
+
+  - anthropics/knowledge-work-plugins (plugin "legal")
+    https://github.com/anthropics/knowledge-work-plugins
+  - anthropics/claude-for-legal (pluginy "litigation-legal", "commercial-legal", "corporate-legal")
+    https://github.com/anthropics/claude-for-legal
+
+Původní díla jsou licencována pod Apache License 2.0 (viz LICENSE).
+Změny: dovednosti byly přepsány do češtiny a upraveny pro české právo a praxi
+advokátní kanceláře (o. s. ř., OZ, ZOK, zákon o advokacii, AML), napojeny na
+konektor Ingrid Ask; dovednosti vázané na americké právo a procesy byly vynechány.
+Upravila AK Mgr. Petr Němec, 2026.

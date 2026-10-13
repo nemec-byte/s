@@ -1,0 +1,7 @@
+{
+  "name": "kancelar-cz",
+  "version": "0.1.0",
+  "description": "Kancelář — profil kanceláře, ranní přehled, prověrka subjektu, příprava schůzky, posouzení rizik, GDPR žádosti.",
+  "author": { "name": "AK Mgr. Petr Němec" },
+  "license": "Apache-2.0"
+}
