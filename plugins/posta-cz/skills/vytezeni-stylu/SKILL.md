@@ -17,14 +17,14 @@ Agent se „učí" průhledně: z vašich skutečných odpovědí sepíše pří
 1. Načti profil schránky (kategorie). Zeptej se na souhlas: „Projdu N odeslaných e-mailů za posledních X měsíců jen pro účely příručky stylu; obsah neukládám, jen anonymizované vzory. Pokračovat?"
 2. **Vzorek** — odeslaná pošta (`in:sent`, za zvolené období), přednostně odpovědi (vlákna s předchozí příchozí zprávou). Vynech: automatické zprávy, přeposílání bez textu, interní komunikaci, pokud profil neříká jinak.
 3. **Zařazení** — ke každé odpovědi urči kategorii příchozí zprávy podle profilu (stejná logika jako třídič).
-4. **Příručka stylu** `styl/<schranka>/prirucka.md`:
+4. **Příručka stylu** — Google Dokument `prirucka-stylu-<schranka>` na Disku:
    - oslovení (podle typu adresáta), vykání / tykání a kdy se mění
    - úvodní a závěrečné fráze, podpis (přesně, jak se používá)
    - délka podle kategorie (typický počet vět)
    - tón a ustálené formulace kanceláře (např. potvrzení přijetí, odkaz na schůzku, odměna, lhůty) — doslovně, ale anonymizovaně
    - co kancelář v e-mailech **nedělá** (např. nehodnotí šance, nepíše částky)
    - u každého pravidla počet výskytů ve vzorku (`viděno 37×`), ať je vidět, co je pravidlo a co výjimka
-5. **Vzory** `styl/<schranka>/vzory/<kategorie>.md` — 3–5 nejtypičtějších dvojic „příchozí (zkráceně) → odpověď", anonymizovaných: `[KLIENT]`, `[PROTISTRANA]`, `[SP. ZN.]`, `[ČÁSTKA]`, `[DATUM]`, `[EXEKUTOR]`. U kategorií s méně než 3 příklady napiš „málo příkladů — doplňte ručně".
+5. **Vzory** — Google Dokumenty `vzory-<schranka>-<kategorie>` — 3–5 nejtypičtějších dvojic „příchozí (zkráceně) → odpověď", anonymizovaných: `[KLIENT]`, `[PROTISTRANA]`, `[SP. ZN.]`, `[ČÁSTKA]`, `[DATUM]`, `[EXEKUTOR]`. U kategorií s méně než 3 příklady napiš „málo příkladů — doplňte ručně".
 6. **Kontrola anonymizace** — projdi oba výstupy znovu a hledej jména, e-maily, telefony, IČO, rodná čísla, spisové značky, částky, adresy. Najdeš-li cokoli, nahraď a uveď počet náhrad.
 7. Ukaž příručku uživateli ke schválení. Zapiš až po schválení. Při opakovaném běhu nepřepisuj ručně upravené části — navrhni rozdíly.
 

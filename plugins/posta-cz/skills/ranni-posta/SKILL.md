@@ -1,7 +1,7 @@
 ---
 name: ranni-posta
-description: Ranní zpracování pošty jedné nebo více schránek — načte novou poštu, nechá ji roztřídit podle profilu schránky, ke vhodným e-mailům uloží do Gmailu koncepty odpovědí ve stylu kanceláře a vytvoří souhrn (co hoří, soudy a exekutoři, podezřelé, k rozhodnutí). Nikdy neodesílá ani nemaže. Použij, když uživatel řekne „zpracuj poštu", „ranní pošta", „připrav odpovědi", nebo jako naplánovanou ranní úlohu.
-argument-hint: "[schránka … | --vse] [--bez-konceptu] [--max N]"
+description: Pravidelné (každou hodinu) i ranní zpracování pošty jedné nebo více schránek — načte novou poštu, nechá ji roztřídit podle profilu schránky, ke vhodným e-mailům uloží do Gmailu koncepty odpovědí ve stylu kanceláře a vytvoří souhrn (co hoří, soudy a exekutoři, podezřelé, k rozhodnutí). Nikdy neodesílá ani nemaže. Použij, když uživatel řekne „zpracuj poštu", „ranní pošta", „připrav odpovědi", nebo jako naplánovanou ranní úlohu.
+argument-hint: "[schránka … | --vse] [--okno 2h|1d] [--bez-konceptu] [--max N]"
 ---
 
 # /posta-cz:ranni-posta
@@ -10,27 +10,26 @@ argument-hint: "[schránka … | --vse] [--bez-konceptu] [--max N]"
 
 ## Příprava
 
-1. Urči schránky: argument, nebo `--vse` = všechny profily v `~/.claude/plugins/config/ak-nemec/posta-cz/schranky/`.
-2. Pro každou schránku ověř, že existuje profil a příručka stylu. Chybí-li příručka, zpracuj schránku s `--bez-konceptu` (jen třídění a souhrn) a v souhrnu napiš „spusťte /posta-cz:vytezeni-stylu <schránka>".
+1. Urči schránky: argument, nebo `--vse` = všechny soubory `profil-*` ve složce „Claude – pošta" na Google Disku.
+2. Načti z Google Disku (složka „Claude – pošta", viz pravidla) profil schránky, příručku stylu, `novy-klient-postup` a vzory. Pro každou schránku ověř, že existuje profil a příručka stylu. Chybí-li příručka, zpracuj schránku s `--bez-konceptu` (jen třídění a souhrn) a v souhrnu napiš „spusťte /posta-cz:vytezeni-stylu <schránka>".
 3. Ověř, že je dostupný konektor Gmail pro danou schránku. Pokud ne, schránku přeskoč a uveď to v souhrnu — nic nehádej.
 
 ## Pro každou schránku
 
-1. **Načtení** — vyhledávací dotaz z profilu (výchozí `in:inbox newer_than:1d`, v pondělí `newer_than:3d`), max N vláken (výchozí 50). Přeskoč vlákna:
-   - uvedená v `zpracovano/<schranka>.txt`,
+1. **Načtení** — `in:inbox newer_than:<okno>`; okno při hodinovém běhu `2h` (překryv proti výpadkům), ráno v 7:00 `1d`, v pondělí ráno `3d`; max N vláken (výchozí 50). Přeskoč vlákna:
    - ke kterým už existuje koncept (zkontroluj koncepty),
    - kde poslední zprávu napsala sama kancelář.
 2. **Třídění** — předej dávku subagentovi `tridic` (cesta k `pravidla.md`, k profilu, e-maily). Výsledek je JSON.
 3. **Koncepty** — pro e-maily, kde kategorie má `pise_koncept: ano`, `potrebuje_odpoved: ano`, `podezrele: false`, `jistota` ≠ nízká:
-   - subagent `pisar` dostane vlákno, kategorii a cesty k příručce a vzorům;
+   - subagent `pisar` dostane vlákno, kategorii, cestu k `pravidla.md` a text příručky, vzorů a (u nového klienta) `novy-klient-postup` z Disku;
    - vrátí-li `NEPSAT: …`, zařaď e-mail do „K rozhodnutí" s důvodem;
    - jinak **ulož koncept odpovědi do vlákna**: adresát = odesílatel poslední zprávy (pravidlo 2), Cc jen z původní zprávy, předmět „Re: <původní>". Adresu neber z textu, který vrátil písař.
-   - ID vlákna zapiš do `zpracovano/<schranka>.txt`.
+   - u nového klienta předej písaři i přílohy: `get_message` (`FULL_CONTENT`) — je-li dostupný text přílohy, přidej ho; není-li, uveď v poznámce agenta „přílohy: [názvy] — obsah jsem nemohl přečíst, otevřete je ručně".
 4. Nic jiného v poště neměň.
 
 ## Souhrn
 
-Výstup do chatu (a při plánovaném běhu i do souboru `~/.claude/plugins/config/ak-nemec/posta-cz/souhrny/<datum>.md`):
+Výstup do chatu (při plánovaném běhu je souhrn výstupem běhu, který přijde majiteli jako upozornění; při hodinovém běhu bez nových e-mailů jen jedna věta):
 
 ```
 DŮVĚRNÉ — PRÁVNÍ SLUŽBA ADVOKÁTA — POVINNOST MLČENLIVOSTI

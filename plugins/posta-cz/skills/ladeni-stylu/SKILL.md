@@ -10,7 +10,7 @@ argument-hint: "<schránka | --vse> [--dni 7]"
 
 ## Postup
 
-1. Ze `zpracovano/<schranka>.txt` vezmi vlákna za posledních N dní (výchozí 7).
+1. Najdi vlákna za posledních N dní (výchozí 7), kde kancelář odpověděla (`in:sent newer_than:Nd`), a u každého zjisti, zda k němu agent dříve připravil koncept (poznámka agenta `[[POZNÁMKA AGENTA` v citované historii nebo souhrny běhů).
 2. Ke každému vláknu najdi skutečně odeslanou odpověď kanceláře (pokud existuje) a porovnej ji s textem konceptu. Koncept už v poště být nemusí — pokud chybí, a odpověď neexistuje, započítej „koncept nepoužit".
 3. Spočítej:
    - použito beze změn / s drobnými úpravami / přepsáno / nepoužito
@@ -20,8 +20,8 @@ argument-hint: "<schránka | --vse> [--dni 7]"
    - `styl/<schranka>/prirucka.md`
    - `styl/<schranka>/vzory/<kategorie>.md` (nový anonymizovaný vzor z dobré odpovědi)
    - profilu schránky (směrování, `pise_koncept`)
-   Zapiš je do `styl/<schranka>/ladeni.md` s datem.
-6. Ukaž návrhy a **aplikuj jen schválené**. Jednorázové úpravy (jen v jednom vlákně) do příručky nedávej.
+   Zapiš je jako nový Google Dokument `ladeni-<schranka>-<RRRR-MM-DD>` do složky „Claude – pošta".
+6. Ukaž návrhy a **aplikuj jen schválené** — jako novou verzi příslušného dokumentu na Disku. Jednorázové úpravy (jen v jednom vlákně) do příručky nedávej.
 
 ## Výstup
 

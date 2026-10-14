@@ -24,7 +24,7 @@ argument-hint: "<schránka, např. nemec | exekuce | kancelar | mooz | makar | c
    - směrování: domény a adresy klientů, soudů, exekutorů, insolvenčních správců (lze doplňovat průběžně)
    - zvláštní pokyny (co se v e-mailech nikdy nepíše)
    - čas ranního běhu
-4. Zapiš profil do `~/.claude/plugins/config/ak-nemec/posta-cz/schranky/<schranka>.md` (po schválení), založ prázdný `zpracovano/<schranka>.txt`.
+4. Zapiš profil po schválení jako Google Dokument `profil-<schranka>` do složky „Claude – pošta" na Disku.
 5. **Další kroky** — doporuč:
    1. `/posta-cz:vytezeni-stylu <schranka>` (bez příručky agent koncepty nepíše)
    2. zkušební běh `/posta-cz:ranni-posta <schranka> --max 10` a kontrola konceptů
