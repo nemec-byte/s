@@ -6,7 +6,7 @@ Spouští se pravidelně (časy jsou v `profil-exekuce`). Nejdřív si přečti 
 
 1. Ověř nástroje. Z Gmailu smí být k dispozici jen čtení (`search_threads`, `get_thread`, `get_message`, `list_drafts`, `get_draft`) a `create_draft`. Je-li dostupné cokoli, co odesílá nebo maže, **skonči** (pravidlo 1).
 2. Ověř, že Gmail je schránka exekuce@ (příjemce libovolné nové zprávy). Pokud ne, skonči a napiš to do souhrnu.
-3. Z Disku načti `profil-exekuce`, `prirucka-stylu-exekuce` a `vzory-exekuce-*` (vždy nejnovější verzi). Pokud příručka chybí, jen třiď a shrň, koncepty nepiš.
+3. Z Disku načti `pokyny-exekuce` (mají přednost před vším kromě pravidel), `profil-exekuce`, `prirucka-stylu-exekuce` a `vzory-exekuce-*` (vždy nejnovější verzi). Pokud příručka chybí, jen třiď a shrň, koncepty nepiš.
 
 ## 2. Načtení
 

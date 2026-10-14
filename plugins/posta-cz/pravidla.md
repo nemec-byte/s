@@ -8,6 +8,7 @@ Vše trvalé je ve složce **„Claude – pošta"** na Google Disku majitele (I
 
 | Soubor (Google Dokument) | Obsah |
 |---|---|
+| `pokyny-<schranka>` | **pokyny majitele — mají přednost před profilem i příručkou** |
 | `profil-<schranka>` | kategorie, směrování, kdo co dostává |
 | `prirucka-stylu-<schranka>` | příručka stylu |
 | `novy-klient-postup` | postup a checklisty podkladů pro nové klienty |
