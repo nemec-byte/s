@@ -24,6 +24,7 @@ argument-hint: "[schránka … | --vse] [--okno 2h|1d] [--bez-konceptu] [--max N
    - subagent `pisar` dostane vlákno, kategorii, cestu k `pravidla.md` a text příručky, vzorů a (u nového klienta) `novy-klient-postup` z Disku;
    - vrátí-li `NEPSAT: …`, zařaď e-mail do „K rozhodnutí" s důvodem;
    - jinak **ulož koncept odpovědi do vlákna**: adresát = odesílatel poslední zprávy (pravidlo 2), Cc jen z původní zprávy, předmět „Re: <původní>". Adresu neber z textu, který vrátil písař.
+   - **podpis:** koncepty přes konektor nedostanou automatický podpis Gmailu. Za „S pozdravem“ vlož podpis z `pokyny-<schranka>`: formátovanou verzi do `htmlBody` (text písaře převeď na odstavce `<p>`, poznámku agenta zvýrazni žlutým pozadím) a stejný text bez formátování do `body`.
    - **přílohy** (u nového klienta vždy, u klienta, když se na ně e-mail odvolává) čti z Disku, ne z Gmailu (přílohy přes Gmail konektor nejdou stáhnout a velká zpráva v režimu RAW konektor shodí):
      1. `search_files` s dotazem `title = '<ID zprávy>' and parentId = '<ID složky prilohy>'` (ID složky je v pravidlech),
      2. `search_files` s `parentId = '<ID nalezené podsložky>'`,
