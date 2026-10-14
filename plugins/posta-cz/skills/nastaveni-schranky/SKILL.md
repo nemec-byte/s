@@ -18,6 +18,7 @@ argument-hint: "<schránka, např. nemec | exekuce | kancelar | mooz | makar | c
      b) **samostatné připojení** schránky (jiný účet Claude / konektor připojený k tomuto účtu Google) — čistší oddělení, víc správy.
      U samostatného připojení: ranní úloha i koncepty patří k účtu Claude, ve kterém je Gmail schránky připojený — plugin, profil a příručka stylu se nastavují v tomto účtu. Ověř, že konektor opravdu ukazuje na správnou schránku (příjemce vyhledané zprávy), než cokoli zpracuješ.
      Rozhodnutí zapiš do profilu. Bez funkčního připojení schránku nezakládej jako aktivní.
+   - **Přílohy:** konektor Gmail přílohy nestáhne. V účtu schránky musí běžet skript „Přílohy pro agenta“ (`../../apps-script/`, návod `INSTALACE.md`). Instaluje ho majitel účtu sám, agent k tomu přístup nemá. U jiného účtu než nemec@ v něm upravte `SLOZKA_PRILOHY_ID` (vlastní složka `prilohy` v Disku daného účtu) a `DOMENA_KANCELARE`. Ověř, že ve složce `prilohy` přibývají podsložky s `_hotovo`.
 3. **Pohovor** (max. 3–4 otázky najednou):
    - kdo koncepty schvaluje a kdo za schránku odpovídá
    - projdi kategorie šablony: sedí? co chybí? které dostávají koncept?
