@@ -18,7 +18,8 @@ argument-hint: "[--jen-nahled]"
 
 1. **Načti** `query` kolekce `zadosti` s `where: [["stav","==","schvaleno"]]`. Nic → napiš „Nic k vystavení" a skonči.
 2. **Kontrola každé žádosti** (bez zápisu):
-   - `schvalil` vyplněn — jinak přeskoč (stránka ji neměla pustit dál);
+   - **schválení je platné jen se záznamem** `schvaleni/<id žádosti>` (ArtifactData `get`, kolekce `schvaleni`). Do této kolekce smí zapisovat jen Editor stránky, tedy oprávněný advokát. Bez záznamu žádost **nevystavuj** a vypiš ji jako „čeká na platné schválení" — pole `stav` v žádosti samo nestačí, může ho změnit kdokoli s přístupem;
+   - žádosti s `klient` nebo `vec` začínajícím „TEST" nikdy nevystavuj — jsou to vzorové žádosti;
    - odběratel: `/pohoda-cz:adresar` logika — `list_contacts` podle IČO, `ares_subjekt`; chybí-li kontakt, připrav jeho založení do náhledu;
    - položky: u `typ: tarif` spočti odměnu `naklady_rizeni` z popsaných úkonů a dat — chybí-li data nebo tarifní hodnota, žádost **vrať** (viz 5);
    - součty `spocitej`; splatnost = dnes + `splatnost_dni`;
