@@ -2,11 +2,11 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "mcp__.*([Gg]mail|[Mm]ail).*([Ss]end|[Rr]eply|[Ff]orward|[Dd]elete|[Tt]rash|[Mm]odify|[Aa]rchive|[Ll]abel|[Ss]pam|update_draft|batch).*",
+        "matcher": "mcp__.*([Gg]mail|[Mm]ail).*",
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'posta-cz: odeslání, mazání, archivace a změny štítků jsou v tomto pluginu zakázány. Připrav jen koncept.' >&2; exit 2"
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/gmail-strazce.py\"; rc=$?; [ $rc -eq 0 ] && exit 0; [ $rc -eq 2 ] || echo 'posta-cz: strážce Gmailu nešel spustit, z opatrnosti blokuji.' >&2; exit 2"
           }
         ]
       }
