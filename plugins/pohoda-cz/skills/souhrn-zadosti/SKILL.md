@@ -19,8 +19,7 @@ argument-hint: ""
 
 ```
 Fakturace — [den, datum]
-🧾 K vystavení: N (celkem X Kč bez DPH) — spusť na počítači s POHODOU /pohoda-cz:zpracovat-zadosti
-⏳ Čeká na schválení: N — nejstarší [klient], [dní] dní, žádal [kdo]
+🧾 Ke kontrole a vystavení: N (celkem X Kč bez DPH) — nejstarší [klient], [dní] dní, žádal [kdo] — spusť na počítači s POHODOU /pohoda-cz:zpracovat-zadosti
 ↩️ Vráceno k opravě: N — [klient]: [důvod]
 📤 Vystaveno, neodesláno klientovi: N — [číslo faktury, klient]
 💰 Odesláno, neuhrazeno: N

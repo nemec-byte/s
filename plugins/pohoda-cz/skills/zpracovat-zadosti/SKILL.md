@@ -1,6 +1,6 @@
 ---
 name: zpracovat-zadosti
-description: Na počítači s POHODOU zpracuje schválené žádosti o fakturu ze stránky „Fakturace AK Němec" — ověří odběratele, dopočítá tarifní odměny, ukáže náhledy všech faktur najednou, po jednom potvrzení je vystaví v POHODĚ, uloží PDF a zapíše číslo faktury zpět do žádosti (stav Vystaveno), takže Anička ji vidí k odeslání. Použij, když uživatel řekne „zpracuj žádosti o faktury", „vystav schválené faktury", „co je k vystavení".
+description: Na počítači s POHODOU zpracuje nové žádosti o fakturu ze stránky „Fakturace AK Němec" — ověří odběratele, dopočítá tarifní odměny, ukáže náhledy všech faktur najednou; Anička vybere, které schvaluje, a tím je zároveň schválí i vystaví v POHODĚ, uloží PDF a zapíše schválení a číslo faktury zpět do žádosti. Ostatní vrátí s důvodem. Použij, když uživatel řekne „zpracuj žádosti o faktury", „vystav schválené faktury", „co je k vystavení".
 argument-hint: "[--jen-nahled]"
 ---
 
@@ -16,9 +16,10 @@ argument-hint: "[--jen-nahled]"
 
 ## Postup
 
-1. **Načti** `query` kolekce `zadosti` s `where: [["stav","==","schvaleno"]]`. Nic → napiš „Nic k vystavení" a skonči.
+1. **Načti** `query` kolekce `zadosti` s `where: [["stav","in",["ke_schvaleni","schvaleno"]]]`. Nic → napiš „Nic ke zpracování" a skonči.
+   **Schvaluje Anička** (profil: `fakturace_schvaluje`). Schválení vzniká v kroku 4 jejím potvrzením; zapisuje se do kolekce `schvaleni`, kam smí jen Editor stránky — proto musí relace běžet pod Aniččiným účtem Claude.
 2. **Kontrola každé žádosti** (bez zápisu):
-   - **schválení je platné jen se záznamem** `schvaleni/<id žádosti>` (ArtifactData `get`, kolekce `schvaleni`). Do této kolekce smí zapisovat jen Editor stránky, tedy oprávněný advokát. Bez záznamu žádost **nevystavuj** a vypiš ji jako „čeká na platné schválení" — pole `stav` v žádosti samo nestačí, může ho změnit kdokoli s přístupem;
+   - pole `stav` v žádosti samo nic neschvaluje (může ho změnit kdokoli s přístupem); platné je jen schválení zapsané do `schvaleni/<id žádosti>` — buď už dříve, nebo v kroku 4;
    - žádosti s `klient` nebo `vec` začínajícím „TEST" nikdy nevystavuj — jsou to vzorové žádosti;
    - odběratel: `/pohoda-cz:adresar` logika — `list_contacts` podle IČO, `ares_subjekt`; chybí-li kontakt, připrav jeho založení do náhledu;
    - položky: u `typ: tarif` spočti odměnu `naklady_rizeni` z popsaných úkonů a dat — chybí-li data nebo tarifní hodnota, žádost **vrať** (viz 5);
@@ -26,7 +27,8 @@ argument-hint: "[--jen-nahled]"
    - duplicita: `list_documents` vydané faktury klienta za posledních 60 dní — faktura se stejným textem a částkou → upozorni v náhledu.
 3. **Náhled všech najednou** — pro každou žádost: klient (+ zdroj ověření), položky, součty bez DPH / s DPH, splatnost, kdo žádal a kdo schválil, upozornění. Na konci souhrn „vystavím N faktur v celkové výši X Kč bez DPH".
    `--jen-nahled` končí tady.
-4. **Jedno potvrzení** — uživatel (typicky Anička) napíše, které vystavit („všechny" / čísla). Pak pro každou:
+4. **Jedno potvrzení = schválení + vystavení** — Anička napíše, které žádosti schvaluje („všechny" / čísla); ostatní buď nechá čekat, nebo vrátí (krok 5). Pak pro každou schválenou:
+   - není-li schválení už zapsané: `set` `schvaleni/<id>` = `{schvalil: "Anička", kdy: <ISO>, zpusob: "při vystavení v POHODĚ"}`. Selže-li zápis (účet není Editor), **nevystavuj** a řekni, že stránka musí mít Aničku jako Editora;
    - je-li třeba, `create_address` (hook si vyžádá potvrzení);
    - `create_invoice` (`type: issuedInvoice`, `partnerId`, položky, data, `accountIds`, `accounting` z profilu, `text` = profil + období + věc);
    - `print` do `pdf_slozka\<číslo>.pdf` (sestava z profilu);

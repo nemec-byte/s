@@ -57,4 +57,5 @@ polozky_typy:                   # typy fakturace kanceláře
 uctarna: ""                     # kdo v kanceláři účtuje (pro dotazy)
 fakturace_url: "https://claude.ai/artifact/TVA7uwBpDS3JPTX5WF5CNM"   # stránka žádostí o fakturu
 fakturace_obsluha: "Anička"     # kdo potvrzuje vystavení a odesílá faktury
+fakturace_schvaluje: "Anička"   # jediná s úrovní Editor na stránce; advokáti Contributor
 ```
