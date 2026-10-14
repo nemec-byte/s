@@ -2,7 +2,7 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "mcp__.*([Gg]mail|[Mm]ail).*([Ss]end|[Dd]elete|[Tt]rash|[Mm]odify|[Aa]rchive|[Ll]abel|[Ff]orward|[Rr]eply_?[Aa]ll|batch).*",
+        "matcher": "mcp__.*([Gg]mail|[Mm]ail).*([Ss]end|[Rr]eply|[Ff]orward|[Dd]elete|[Tt]rash|[Mm]odify|[Aa]rchive|[Ll]abel|[Ss]pam|update_draft|batch).*",
         "hooks": [
           {
             "type": "command",
