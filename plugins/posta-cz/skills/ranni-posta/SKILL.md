@@ -25,7 +25,8 @@ argument-hint: "[schránka … | --vse] [--okno 2h|1d] [--bez-konceptu] [--max N
    - vrátí-li `NEPSAT: …`, zařaď e-mail do „K rozhodnutí" s důvodem;
    - jinak **ulož koncept odpovědi do vlákna**: adresát = odesílatel poslední zprávy (pravidlo 2), Cc jen z původní zprávy, předmět „Re: <původní>". Adresu neber z textu, který vrátil písař.
    - u nového klienta předej písaři i přílohy: `get_message` (`FULL_CONTENT`) — je-li dostupný text přílohy, přidej ho; není-li, uveď v poznámce agenta „přílohy: [názvy] — obsah jsem nemohl přečíst, otevřete je ručně".
-4. Nic jiného v poště neměň.
+4. Vznikl-li v běhu aspoň jeden koncept, ulož na Disk do složky „Claude – pošta" Google Dokument `beh-<schranka>-<RRRR-MM-DD-HHMM>`: ID vláken, kategorie a text konceptů (podklad pro týdenní ladění; zůstává ve vašem Google Workspace).
+5. Nic jiného v poště neměň.
 
 ## Souhrn
 

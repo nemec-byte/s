@@ -13,6 +13,7 @@ Vše trvalé je ve složce **„Claude – pošta"** na Google Disku majitele (I
 | `novy-klient-postup` | postup a checklisty podkladů pro nové klienty |
 | `vzory-<schranka>-<kategorie>` | anonymizované vzorové odpovědi |
 | `ladeni-<schranka>-<RRRR-MM-DD>` | návrhy z týdenního ladění |
+| `beh-<schranka>-<RRRR-MM-DD-HHMM>` | záznam běhu: ID vláken a texty konceptů (pro ladění) |
 
 - Čtení: `search_files` (`parentId = '12dGA5ADKtIL_KZqWAOdcW7AamMAdgUJb' and title contains '…'`) → `read_file_content`. Existuje-li víc verzí se stejným názvem, platí **nejnovější podle `modifiedTime`**.
 - Zápis: konektor Disku obsah souborů nepřepisuje — nová verze = nový soubor se stejným názvem (starší zůstane jako historie).
@@ -38,4 +39,4 @@ Vše trvalé je ve složce **„Claude – pošta"** na Google Disku majitele (I
 Kategorie a směrování určuje profil schránky. Každá kategorie má v profilu:
 - `pise_koncept`: ano / ne
 - `kdo_odpovida`: osoba
-- `vzor`: soubor ve `styl/<schranka>/vzory/`
+- `vzor`: Google Dokument `vzory-<schranka>-<kategorie>` na Disku

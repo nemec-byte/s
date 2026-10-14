@@ -10,15 +10,16 @@ argument-hint: "<schránka | --vse> [--dni 7]"
 
 ## Postup
 
-1. Najdi vlákna za posledních N dní (výchozí 7), kde kancelář odpověděla (`in:sent newer_than:Nd`), a u každého zjisti, zda k němu agent dříve připravil koncept (poznámka agenta `[[POZNÁMKA AGENTA` v citované historii nebo souhrny běhů).
+1. Na Disku najdi záznamy běhů `beh-<schranka>-*` za posledních N dní (výchozí 7) — obsahují ID vláken a text konceptů, které agent připravil.
 2. Ke každému vláknu najdi skutečně odeslanou odpověď kanceláře (pokud existuje) a porovnej ji s textem konceptu. Koncept už v poště být nemusí — pokud chybí, a odpověď neexistuje, započítej „koncept nepoužit".
 3. Spočítej:
    - použito beze změn / s drobnými úpravami / přepsáno / nepoužito
    - podle kategorie
 4. Najdi **opakované** úpravy (alespoň 3×): změna oslovení, zkrácení, odstraněné nebo přidané formulace, změněný tón, přeřazení do jiné kategorie, e-maily, na které agent koncept psát neměl (nebo naopak měl).
 5. Navrhni změny jako rozdíly (před → po) do:
-   - `styl/<schranka>/prirucka.md`
-   - `styl/<schranka>/vzory/<kategorie>.md` (nový anonymizovaný vzor z dobré odpovědi)
+   - `prirucka-stylu-<schranka>`
+   - `vzory-<schranka>-<kategorie>` (nový anonymizovaný vzor z dobré odpovědi)
+   - `novy-klient-postup`
    - profilu schránky (směrování, `pise_koncept`)
    Zapiš je jako nový Google Dokument `ladeni-<schranka>-<RRRR-MM-DD>` do složky „Claude – pošta".
 6. Ukaž návrhy a **aplikuj jen schválené** — jako novou verzi příslušného dokumentu na Disku. Jednorázové úpravy (jen v jednom vlákně) do příručky nedávej.

@@ -1,6 +1,6 @@
 # Profil schránky: exekuce@ — šablona
 
-*Vyplní /posta-cz:nastaveni-schranky exekuce dne [DATUM]. Ukládá se do `~/.claude/plugins/config/ak-nemec/posta-cz/schranky/exekuce.md`.*
+*Vyplní /posta-cz:nastaveni-schranky exekuce dne [DATUM]. Ukládá se na Google Disk do složky „Claude – pošta" jako `profil-exekuce`.*
 
 **Adresa:** exekuce@[DOPLNIT — doména kanceláře]
 **Kdo schvaluje koncepty:** [DOPLNIT]

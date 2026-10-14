@@ -1,6 +1,6 @@
 # Profil schránky: nemec@ — šablona
 
-*Vyplní /posta-cz:nastaveni-schranky nemec dne [DATUM]. Ukládá se do `~/.claude/plugins/config/ak-nemec/posta-cz/schranky/nemec.md`.*
+*Vyplní /posta-cz:nastaveni-schranky nemec dne [DATUM]. Ukládá se na Google Disk do složky „Claude – pošta" jako `profil-nemec`.*
 
 **Adresa:** [DOPLNIT]@[DOPLNIT — doména kanceláře]
 **Majitel / kdo schvaluje koncepty:** Mgr. Petr Němec
