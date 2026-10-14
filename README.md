@@ -13,7 +13,7 @@ Sedm pluginů pro Claude (Cowork / Claude Code), převzaté z právnických plug
 | **smlouvy-cz** | `nastaveni`, `revize-smlouvy`, `nda-triage`, `historie-dodatku`, `hlidani-vypovedi`, `shrnuti-pro-klienta` | Smlouvy podle OZ a playbooku kanceláře |
 | **reserse-cz** | `reserse`, `reserse-k-paragrafu`, `overeni-citaci` | Rešerše podle metodiky Ingrid: vrstvy, právní síla, časová okna, ověření plného textu, judikatura proti, kontrola citací před odesláním |
 | **posta-cz** | `nastaveni-schranky`, `vytezeni-stylu`, `ranni-posta`, `ladeni-stylu` + agenti `tridic`, `pisar` | Ranní pošta: třídění podle profilu schránky, koncepty odpovědí v Gmailu ve stylu kanceláře naučeném z odeslané pošty, týdenní ladění. Odesílání a mazání blokuje hook. Šablony schránek nemec@ a exekuce@ |
-| **pohoda-cz** | `nastaveni`, `prehledy`, `vystavit-fakturu`, `upominky`, `adresar` | Účetnictví POHODA přes dg/pohoda-mcp (ověřený commit 3eba9a2). Jen z počítače v síti kanceláře. Zápis po náhledu a potvrzení, `raw_xml` a tisk do síťových cest blokuje hook |
+| **pohoda-cz** | `nastaveni`, `prehledy`, `vystavit-fakturu`, `zpracovat-zadosti`, `upominky`, `adresar` | Účetnictví POHODA přes dg/pohoda-mcp (ověřený commit 3eba9a2). Jen z počítače v síti kanceláře. Zápis po náhledu a potvrzení, `raw_xml` a tisk do síťových cest blokuje hook. Žádosti o fakturu podávají advokáti na stránce [Fakturace AK Němec](https://claude.ai/artifact/TVA7uwBpDS3JPTX5WF5CNM) |
 | **korporat-cz** | `nastaveni`, `due-diligence`, `rozhodnuti-mimo-vh`, `zapis-z-valne-hromady`, `korporatni-povinnosti`, `closing-checklist` | Korporátní agenda podle ZOK |
 
 Dovednosti se spouští lomítkem, např. `/spory-cz:lhuty`, nebo samy, když o úkol požádáte běžnou větou („přišlo usnesení, do kdy je odvolání?").

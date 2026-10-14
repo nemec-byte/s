@@ -55,4 +55,6 @@ polozky_typy:                   # typy fakturace kanceláře
   - pausal:   { jednotka: "měs", sazba: 0 }
   - mimosmluvni: "podle advokátního tarifu — naklady_rizeni"
 uctarna: ""                     # kdo v kanceláři účtuje (pro dotazy)
+fakturace_url: "https://claude.ai/artifact/TVA7uwBpDS3JPTX5WF5CNM"   # stránka žádostí o fakturu
+fakturace_obsluha: "Anička"     # kdo potvrzuje vystavení a odesílá faktury
 ```
