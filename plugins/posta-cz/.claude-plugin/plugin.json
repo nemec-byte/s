@@ -1,0 +1,7 @@
+{
+  "name": "posta-cz",
+  "version": "0.1.0",
+  "description": "Ranní zpracování pošty pro advokátní kancelář — třídění podle typu e-mailu, koncepty odpovědí ve stylu kanceláře naučeném z odeslané pošty, týdenní ladění. Nikdy neodesílá ani nemaže.",
+  "author": { "name": "AK Mgr. Petr Němec" },
+  "license": "Apache-2.0"
+}

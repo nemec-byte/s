@@ -1,6 +1,6 @@
 # České právnické pluginy pro Claude — AK Mgr. Petr Němec
 
-Pět pluginů pro Claude (Cowork / Claude Code), převzaté z právnických pluginů Anthropic a přepsané pro české právo a praxi advokátní kanceláře. Právo, lhůty, registry a vzory podání berou z konektoru **Ingrid Ask**.
+Šest pluginů pro Claude (Cowork / Claude Code), převzaté z právnických pluginů Anthropic a přepsané pro české právo a praxi advokátní kanceláře. Právo, lhůty, registry a vzory podání berou z konektoru **Ingrid Ask**.
 
 > **Každý výstup je návrh pro kontrolu advokátem.** Pluginy nic neodesílají, nepodávají ani nepodepisují. Lhůty jsou vždy označené „návrh — ověří advokát"; rozhodující zůstává lhůtář kanceláře (Praetor).
 
@@ -12,6 +12,7 @@ Pět pluginů pro Claude (Cowork / Claude Code), převzaté z právnických plug
 | **spory-cz** | `nastaveni`, `prijeti-veci`, `lhuty`, `predzalobni-vyzva`, `prijata-vyzva`, `chronologie`, `podani`, `naklady`, `stav-veci` + agent `hlidac-lhut` | Sporová agenda podle o. s. ř. |
 | **smlouvy-cz** | `nastaveni`, `revize-smlouvy`, `nda-triage`, `historie-dodatku`, `hlidani-vypovedi`, `shrnuti-pro-klienta` | Smlouvy podle OZ a playbooku kanceláře |
 | **reserse-cz** | `reserse`, `reserse-k-paragrafu`, `overeni-citaci` | Rešerše podle metodiky Ingrid: vrstvy, právní síla, časová okna, ověření plného textu, judikatura proti, kontrola citací před odesláním |
+| **posta-cz** | `nastaveni-schranky`, `vytezeni-stylu`, `ranni-posta`, `ladeni-stylu` + agenti `tridic`, `pisar` | Ranní pošta: třídění podle profilu schránky, koncepty odpovědí v Gmailu ve stylu kanceláře naučeném z odeslané pošty, týdenní ladění. Odesílání a mazání blokuje hook. Šablony schránek nemec@ a exekuce@ |
 | **korporat-cz** | `nastaveni`, `due-diligence`, `rozhodnuti-mimo-vh`, `zapis-z-valne-hromady`, `korporatni-povinnosti`, `closing-checklist` | Korporátní agenda podle ZOK |
 
 Dovednosti se spouští lomítkem, např. `/spory-cz:lhuty`, nebo samy, když o úkol požádáte běžnou větou („přišlo usnesení, do kdy je odvolání?").
@@ -36,6 +37,7 @@ Dovednosti se spouští lomítkem, např. `/spory-cz:lhuty`, nebo samy, když o 
 /plugin install smlouvy-cz@ak-nemec-pravo-cz
 /plugin install korporat-cz@ak-nemec-pravo-cz
 /plugin install reserse-cz@ak-nemec-pravo-cz
+/plugin install posta-cz@ak-nemec-pravo-cz
 ```
 (Repozitář je soukromý — Claude Code musí mít přístup k GitHubu.)
 

@@ -50,6 +50,15 @@
       "author": {
         "name": "AK Mgr. Petr Němec"
       }
+    },
+    {
+      "name": "posta-cz",
+      "displayName": "Pošta (CZ)",
+      "source": "./plugins/posta-cz",
+      "description": "Ranní zpracování pošty: třídění podle typu e-mailu, koncepty odpovědí ve stylu kanceláře (naučeném z odeslané pošty), týdenní ladění; každá schránka má vlastní profil. Nikdy neodesílá ani nemaže.",
+      "author": {
+        "name": "AK Mgr. Petr Němec"
+      }
     }
   ]
 }
