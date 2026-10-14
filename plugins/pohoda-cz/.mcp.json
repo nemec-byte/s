@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "pohoda": {
+      "type": "stdio",
+      "command": "php",
+      "args": ["${POHODA_MCP_DIR}/server.php"],
+      "env": {
+        "POHODA_URL": "${POHODA_URL}",
+        "POHODA_ICO": "${POHODA_ICO}",
+        "POHODA_USERNAME": "${POHODA_USERNAME}",
+        "POHODA_PASSWORD": "${POHODA_PASSWORD}"
+      }
+    }
+  }
+}

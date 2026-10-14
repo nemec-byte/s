@@ -1,0 +1,7 @@
+{
+  "name": "pohoda-cz",
+  "version": "0.1.0",
+  "description": "Účetnictví POHODA pro advokátní kancelář — přehledy pohledávek a obratů, vystavení faktury z podkladů (smluvní i mimosmluvní odměna), upomínky s úrokem z prodlení, adresář s ověřením v ARES. Zápis jen po potvrzení, raw XML blokováno.",
+  "author": { "name": "AK Mgr. Petr Němec" },
+  "license": "Apache-2.0"
+}

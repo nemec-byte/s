@@ -59,6 +59,15 @@
       "author": {
         "name": "AK Mgr. Petr Němec"
       }
+    },
+    {
+      "name": "pohoda-cz",
+      "displayName": "Pohoda (CZ)",
+      "source": "./plugins/pohoda-cz",
+      "description": "Účetnictví POHODA: přehledy pohledávek a obratů, vystavení faktury z podkladů (i mimosmluvní odměna podle tarifu), upomínky s úrokem z prodlení, adresář s ověřením v ARES. Běží jen na počítači v síti kanceláře; zápis po potvrzení, raw XML blokováno.",
+      "author": {
+        "name": "AK Mgr. Petr Němec"
+      }
     }
   ]
 }
