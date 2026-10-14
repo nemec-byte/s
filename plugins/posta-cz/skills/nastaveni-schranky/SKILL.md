@@ -16,6 +16,7 @@ argument-hint: "<schránka, např. nemec | exekuce | kancelar | mooz | makar | c
    - Je-li schránka jiný účet, než na který je konektor připojen, vysvětli možnosti a nech uživatele vybrat:
      a) **přeposílání** pošty ze schránky do připojeného účtu se štítkem (např. `exekuce`) — nejjednodušší; koncepty pak vznikají v připojeném účtu a při odeslání je třeba zvolit odesílací adresu schránky („Odeslat jako");
      b) **samostatné připojení** schránky (jiný účet Claude / konektor připojený k tomuto účtu Google) — čistší oddělení, víc správy.
+     U samostatného připojení: ranní úloha i koncepty patří k účtu Claude, ve kterém je Gmail schránky připojený — plugin, profil a příručka stylu se nastavují v tomto účtu. Ověř, že konektor opravdu ukazuje na správnou schránku (příjemce vyhledané zprávy), než cokoli zpracuješ.
      Rozhodnutí zapiš do profilu. Bez funkčního připojení schránku nezakládej jako aktivní.
 3. **Pohovor** (max. 3–4 otázky najednou):
    - kdo koncepty schvaluje a kdo za schránku odpovídá

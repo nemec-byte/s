@@ -4,10 +4,11 @@
 
 **Adresa:** exekuce@[DOPLNIT — doména kanceláře]
 **Kdo schvaluje koncepty:** [DOPLNIT]
-**Jak je schránka připojená:** [DOPLNIT — vlastní účet Google v konektoru Gmail / přeposílání do nemec@ se štítkem „exekuce"]
+**Jak je schránka připojená:** samostatně — konektor Gmail připojený přímo k účtu exekuce@ (rozhodnuto 14. 10. 2026)
+**Účet Claude, pod kterým běží ranní úloha:** [DOPLNIT — účet osoby, která exekuce@ vyřizuje; v něm je připojený Gmail exekuce@ a nainstalovaný plugin posta-cz]
 **Koho kancelář v exekucích zastupuje:** [DOPLNIT — oprávněné (věřitele) / povinné / obojí]
 **Čas ranního zpracování:** [DOPLNIT]
-**Vyhledávání nové pošty:** `in:inbox newer_than:1d` (při přeposílání: `label:exekuce newer_than:1d`)
+**Vyhledávání nové pošty:** `in:inbox newer_than:1d` (v pondělí `newer_than:3d`)
 
 ## Kategorie (návrh — upraví se při nastavení)
 
