@@ -24,6 +24,8 @@
 // ID složky „prilohy“ ve složce „Claude – pošta“ (vytvořena 14. 10. 2026)
 const SLOZKA_PRILOHY_ID = '1eVyWiME-0gVnUdUYli82LXrk-83Oz2sP';
 const DOMENA_KANCELARE = '@akpetrnemec.cz';
+// Adresa schránky, ve které skript běží (nemec@, exekuce@ …) — její vlastní odeslané přílohy se v historii neukládají
+const VLASTNI_ADRESA = (Session.getEffectiveUser().getEmail() || '(nezjištěno)').toLowerCase();
 
 // Nová pošta: stejné okno jako hodinový běh agenta + rezerva
 const HLEDAT_NOVE = 'in:inbox has:attachment newer_than:2d -category:promotions -category:social';
@@ -82,7 +84,7 @@ function historie() {
       pocet++;
       for (const zprava of zpravy) {
         if (Date.now() - start > MAX_BEH_MS) { prerusenoCasem = true; break; }
-        if (zprava.getFrom().indexOf(DOMENA_KANCELARE) !== -1) continue;
+        if (zprava.getFrom().toLowerCase().indexOf(VLASTNI_ADRESA) !== -1) continue;   // přeposlané od kolegů ano
         ulozZpravu_(slozkaHist, vlakno, zprava);
       }
       if (prerusenoCasem) break;
