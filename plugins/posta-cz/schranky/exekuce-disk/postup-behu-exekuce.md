@@ -1,10 +1,10 @@
 # Postup běhu – pošta exekuce@
 
-Spouští se pravidelně (časy jsou v `profil-exekuce`). Nejdřív si přečti `pravidla-exekuce`. Mají přednost.
+Spouští se pravidelně (časy jsou v `pokyny-exekuce` a `profil-exekuce`). Nejdřív si přečti `pravidla-exekuce`. Mají přednost.
 
 ## 1. Příprava
 
-1. Ověř nástroje. Z Gmailu smí být k dispozici jen čtení (`search_threads`, `get_thread`, `get_message`, `list_drafts`, `get_draft`) a `create_draft`. Je-li dostupné cokoli, co odesílá nebo maže, **skonči** (pravidlo 1).
+1. Ověř nástroje Gmailu podle pravidla 1 (povolené jsou jen čtení, `create_draft`, `list_labels`, `label_thread` a `create_label`). Je-li dostupné cokoli dalšího, co zapisuje, **skonči** (pravidlo 1).
 2. Ověř, že Gmail je schránka exekuce@ (příjemce libovolné nové zprávy). Pokud ne, skonči a napiš to do souhrnu.
 3. Z Disku načti `pokyny-exekuce` (mají přednost před vším kromě pravidel), `profil-exekuce`, `prirucka-stylu-exekuce` a `vzory-exekuce-*` (vždy nejnovější verzi). Pokud příručka chybí, jen třiď a shrň, koncepty nepiš.
 
@@ -39,7 +39,18 @@ Koncept piš jen tehdy, když kategorie má `pise_koncept: ano`, zpráva potřeb
 - Lhůty a částky jen z nástrojů Ingrid. Právní obsah jen podle pravidla 7.
 - Uložení: `create_draft` s `replyToMessageId` poslední příchozí zprávy, `to` = její odesílatel (pravidlo 2), předmět „Re: <původní>“.
 
-## 6. Záznam a souhrn
+## 6. Štítky
+
+Každé zpracované vlákno označ (`label_thread`) štítky s předponou `Claude/`. ID štítků zjistíš přes `list_labels`, chybějící založíš přes `create_label`:
+- `Claude/<kategorie>` (např. `Claude/povinny-dotaz`),
+- `Claude/koncept`, pokud vznikl koncept,
+- `Claude/k-rozhodnuti`, pokud jde do „K rozhodnutí“,
+- `Claude/naléhavé` u 🔴,
+- `Claude/podezřelé` u ⚠️.
+
+Nic jiného se štítky nedělej: neodebírej je, nepřidávej systémové, nearchivuj. Štítky jsou jen orientační pro tým, k deduplikaci se nepoužívají (přecházejí i na nové zprávy ve vlákně).
+
+## 7. Záznam a souhrn
 
 - Vznikl-li aspoň jeden koncept, ulož do složky dokument `beh-exekuce-<RRRR-MM-DD-HHMM>`. Obsahuje ID vláken, kategorie a texty konceptů.
 - Souhrn (výstup běhu):

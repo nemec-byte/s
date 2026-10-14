@@ -8,7 +8,7 @@ Složka: „Claude – pošta – exekuce“, ID `1Md6KyBNrVxffyEyfEvaaC0JyEwN86
 
 Kontrolu ukaž jako tabulku ✅/❌. Při chybě přestaň a řekni, co nastavit.
 1. **Gmail** je připojený ke schránce exekuce@ (ověř podle příjemce jedné nové zprávy).
-2. **Odesílací nástroje Gmailu jsou vypnuté.** K dispozici smí být jen čtení a `create_draft`. Pokud je dostupné cokoli, co odesílá, odpovídá, přeposílá, maže, štítkuje nebo upravuje koncepty: vypněte to na claude.ai → Nastavení → Konektory → Gmail → u každého takového nástroje „Nepovolovat“.
+2. **Nástroje Gmailu odpovídají pravidlu 1.** Povolené jsou jen čtení, `create_draft`, `list_labels`, `label_thread` a `create_label`. Pokud je dostupné cokoli dalšího, co zapisuje (odesílá, odpovídá, přeposílá, maže, odebírá štítky, mění štítky zprávy, spam, upravuje koncepty), vypněte to na claude.ai → Nastavení → Konektory → Gmail → u každého takového nástroje „Nepovolovat“.
 3. **Google Disk** vidí složku podle ID výše a umí do ní zapisovat.
 4. **Ingrid Ask** odpovídá (zkus např. `zneni_paragrafu` 120/2001 § 55).
 5. **Přílohy:** ve složce `prilohy` (ID `1ZV7Tik-Nfh1EB0YmqbCExtlD3531-Hic`) přibývají podsložky a podsložka `historie`. Pokud ne, skript „Přílohy pro agenta“ v účtu exekuce@ ještě neběží (viz `INSTALACE-skriptu-exekuce`).
