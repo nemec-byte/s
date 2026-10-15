@@ -42,7 +42,14 @@ const RETENCE_DNI = 90;
 const MAX_VELIKOST_B = 20 * 1024 * 1024;   // větší přílohy přeskočit
 const MAX_BEH_MS = 4.5 * 60 * 1000;        // limit jednoho běhu Apps Scriptu je 6 min
 const OCR_TYPY = ['application/pdf', 'image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
-const POVOLENE_KONCOVKY = ['pdf', 'doc', 'docx', 'odt', 'rtf', 'txt', 'xls', 'xlsx', 'ods', 'csv',
+// Word/ODT/RTF: kopie jako Google Dokument „(text)“, aby je agent přečetl i tam, kde konektor formát nečte
+const TEXT_KONCOVKY = ['doc', 'docx', 'odt', 'rtf'];
+const TYPY_PODLE_KONCOVKY = {
+  pdf: 'application/pdf', jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png',
+  doc: 'application/msword', rtf: 'application/rtf', odt: 'application/vnd.oasis.opendocument.text',
+  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+};
+const POVOLENE_KONCOVKY = ['zip', 'pdf', 'doc', 'docx', 'odt', 'rtf', 'txt', 'xls', 'xlsx', 'ods', 'csv',
                            'jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'heic', 'tif', 'tiff', 'isdoc', 'xml', 'zfo'];
 
 // ---------------------------------------------------------------- nová pošta
@@ -117,24 +124,72 @@ function ulozZpravu_(koren, vlakno, zprava) {
     const koncovka = (nazev.split('.').pop() || '').toLowerCase();
     if (p.getSize() > MAX_VELIKOST_B) { zaznam.push('PŘESKOČENO (velikost): ' + nazev); continue; }
     if (POVOLENE_KONCOVKY.indexOf(koncovka) === -1) { zaznam.push('PŘESKOČENO (typ .' + koncovka + '): ' + nazev); continue; }
-    if (slozka.getFilesByName(nazev).hasNext()) { zaznam.push('ULOŽENO: ' + nazev); continue; }  // přerušený běh
-
-    const blob = p.copyBlob().setName(nazev);
-    slozka.createFile(blob);
-    zaznam.push('ULOŽENO: ' + nazev);
-
-    if (OCR_TYPY.indexOf(p.getContentType()) !== -1) {
-      try {
-        Drive.Files.create(
-          { name: nazev + ' (OCR)', mimeType: 'application/vnd.google-apps.document', parents: [slozka.getId()] },
-          blob, { ocrLanguage: 'cs' });
-        zaznam.push('OCR: ' + nazev);
-      } catch (e) {
-        zaznam.push('OCR SELHALO: ' + nazev + ' – ' + e.message);
+    if (koncovka === 'zip') {                       // ZIP rozbalit, uložit jen povolené typy (ne další ZIP)
+      let soubory = [];
+      try { soubory = Utilities.unzip(p.copyBlob().setContentType('application/zip')); }
+      catch (e) { zaznam.push('ZIP NEŠEL ROZBALIT: ' + nazev + ' – ' + e.message); continue; }
+      for (const b of soubory) {
+        const n = (b.getName() || '').split('/').pop();
+        const k = (n.split('.').pop() || '').toLowerCase();
+        if (!n || k === 'zip' || POVOLENE_KONCOVKY.indexOf(k) === -1) { zaznam.push('PŘESKOČENO ze ZIP: ' + n); continue; }
+        const typ = TYPY_PODLE_KONCOVKY[k];
+        if (typ) b.setContentType(typ);
+        ulozSoubor_(slozka, b.setName(nazev + ' – ' + n), zaznam);
       }
+      continue;
     }
+    ulozSoubor_(slozka, p.copyBlob().setName(nazev), zaznam);
   }
   slozka.createFile('_hotovo', zaznam.join('\n'), MimeType.PLAIN_TEXT);
+}
+
+function ulozSoubor_(slozka, blob, zaznam) {
+  const nazev = blob.getName();
+  const koncovka = (nazev.split('.').pop() || '').toLowerCase();
+  if (slozka.getFilesByName(nazev).hasNext()) { zaznam.push('ULOŽENO: ' + nazev); return; }  // přerušený běh
+  slozka.createFile(blob);
+  zaznam.push('ULOŽENO: ' + nazev);
+  const ocr = OCR_TYPY.indexOf(blob.getContentType()) !== -1 || ['pdf', 'jpg', 'jpeg', 'png'].indexOf(koncovka) !== -1;
+  const text = TEXT_KONCOVKY.indexOf(koncovka) !== -1;
+  if (!ocr && !text) return;
+  try {
+    Drive.Files.create(
+      { name: nazev + (ocr ? ' (OCR)' : ' (text)'), mimeType: 'application/vnd.google-apps.document', parents: [slozka.getId()] },
+      blob, ocr ? { ocrLanguage: 'cs' } : {});
+    zaznam.push((ocr ? 'OCR: ' : 'TEXT: ') + nazev);
+  } catch (e) {
+    zaznam.push('PŘEVOD SELHAL: ' + nazev + ' – ' + e.message);
+  }
+}
+
+// ---------------------------------------------------------------- fronta (cílené dostažení)
+
+/**
+ * Agent může požádat o přílohy konkrétních zpráv: do složky „prilohy/fronta“ uloží textový soubor
+ * s ID zpráv z Gmailu (libovolně oddělená). Skript je každých 5 minut stáhne do „prilohy/historie“
+ * a hotový soubor přesune do koše. Agent tím nic jiného než stažení příloh nespustí.
+ */
+function zpracujFrontu() {
+  const start = Date.now();
+  const koren = DriveApp.getFolderById(SLOZKA_PRILOHY_ID);
+  const fronta = najdiNeboVytvor_(koren, 'fronta');
+  const hist = najdiNeboVytvor_(koren, 'historie');
+  const it = fronta.getFiles();
+  while (it.hasNext()) {
+    const f = it.next();
+    const ids = (f.getBlob().getDataAsString().match(/\b[0-9a-f]{16}\b/g) || []);
+    const zbyva = [];
+    for (const id of ids) {
+      if (Date.now() - start > MAX_BEH_MS) { zbyva.push(id); continue; }
+      try {
+        const zprava = GmailApp.getMessageById(id);
+        if (zprava) ulozZpravu_(hist, zprava.getThread(), zprava);
+      } catch (e) { /* neexistující nebo nedostupná zpráva – přeskočit */ }
+    }
+    if (zbyva.length) fronta.createFile(f.getName(), zbyva.join('\n'), MimeType.PLAIN_TEXT);
+    f.setTrashed(true);
+    if (Date.now() - start > MAX_BEH_MS) return;
+  }
 }
 
 function najdi_(koren, nazev) {
@@ -158,7 +213,7 @@ function uklid_(koren) {
   const it = koren.getFolders();
   while (it.hasNext()) {
     const s = it.next();
-    if (s.getName() !== 'historie' && s.getDateCreated().getTime() < hranice) s.setTrashed(true);
+    if (s.getName() !== 'historie' && s.getName() !== 'fronta' && s.getDateCreated().getTime() < hranice) s.setTrashed(true);
   }
 }
 
@@ -174,8 +229,10 @@ function vypniSpoustec_(funkce) {
 function nastavSpoustece() {
   vypniSpoustec_('ulozPrilohy');
   vypniSpoustec_('historie');
+  vypniSpoustec_('zpracujFrontu');
   ScriptApp.newTrigger('ulozPrilohy').timeBased().everyMinutes(10).create();
   ScriptApp.newTrigger('historie').timeBased().everyMinutes(15).create();
+  ScriptApp.newTrigger('zpracujFrontu').timeBased().everyMinutes(5).create();
 }
 
 /** Stav historie – kolik měsíců z HISTORIE_MESICU je hotovo (spusťte a podívejte se do protokolu). */
@@ -188,4 +245,5 @@ function stavHistorie() {
 function vypnoutVse() {
   vypniSpoustec_('ulozPrilohy');
   vypniSpoustec_('historie');
+  vypniSpoustec_('zpracujFrontu');
 }
