@@ -22,7 +22,12 @@ argument-hint: "[schránka … | --vse] [--okno 2h|1d] [--bez-konceptu] [--max N
    - kde poslední zprávu napsala sama kancelář.
 2. **Třídění** — předej dávku subagentovi `tridic` (cesta k `pravidla.md`, k profilu, e-maily). Výsledek je JSON.
 3. **Koncepty** — pro e-maily, kde kategorie má `pise_koncept: ano`, `potrebuje_odpoved: ano`, `podezrele: false`, `jistota` ≠ nízká:
-   - subagent `pisar` dostane vlákno, kategorii, cestu k `pravidla.md` a text příručky, vzorů a (u nového klienta) `novy-klient-postup` z Disku;
+   - **historie klienta (před každým konceptem, bez časového omezení):**
+     1. `search_threads` s `from:<adresa> OR to:<adresa>` (příchozí i odeslaná pošta, bez `newer_than`). U adresy, se kterou kancelář dosud nepsala, hledej i podle jména klienta, spisové značky, čísla exekuce nebo názvu věřitele/protistrany z e-mailu a příloh. Započítej i zprávy, které za klienta psali zástupci (rodina, opatrovník, jiný advokát), a interní předání (přeposlání z exekuce@, mezi kolegy z @akpetrnemec.cz).
+     2. Nalezená vlákna čti `get_thread` (`PLAIN_TEXT`), nejdřív ta s **poslední odpovědí kanceláře**. Zjisti: kterých věcí, řízení a věřitelů/protistran se klient týká; v jaké fázi je každá z nich (posouzení, výzva, žaloba, odvolání, exekuce, insolvence, skončeno); co klient už poslal; co mu kancelář sdělila, doporučila nebo slíbila (včetně ceny a termínu dodání).
+     3. Výsledek je krátký **výtah z historie** (anonymizovaně jen v záznamu běhu; písaři celý). Předej ho písaři. Když si historie odporuje (dvě různé informace o stavu, ceně, převzetí), zapiš rozpor do výtahu.
+     4. **Přiřazení:** plyne-li z historie, že věc vede konkrétní kolega/kolegyně (oni klientovi naposledy věcně odpovídali), uveď je v souhrnu u e-mailu („vede: …“) i v poznámce agenta, i když profil schránky obecně říká jinak. Koncept piš dál, ale tak, aby navazoval na jejich poslední odpověď.
+   - subagent `pisar` dostane vlákno, výtah z historie, kategorii, cestu k `pravidla.md` a text příručky, vzorů a (u nového klienta) `novy-klient-postup` z Disku;
    - vrátí-li `NEPSAT: …`, zařaď e-mail do „K rozhodnutí" s důvodem;
    - jinak **ulož koncept odpovědi do vlákna**: adresát = odesílatel poslední zprávy (pravidlo 2), Cc jen z původní zprávy, předmět „Re: <původní>". Adresu neber z textu, který vrátil písař.
    - **podpis:** koncepty přes konektor nedostanou automatický podpis Gmailu. Za „S pozdravem“ vlož podpis z `pokyny-<schranka>`: formátovanou verzi do `htmlBody` (text písaře převeď na odstavce `<p>`, poznámku agenta zvýrazni žlutým pozadím) a stejný text bez formátování do `body`.
