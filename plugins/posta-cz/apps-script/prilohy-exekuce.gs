@@ -166,7 +166,7 @@ function ulozSoubor_(slozka, blob, zaznam) {
 
 /**
  * Agent může požádat o přílohy konkrétních zpráv: do složky „prilohy/fronta“ uloží textový soubor
- * s ID zpráv z Gmailu (libovolně oddělená). Skript je každých 5 minut stáhne do „prilohy/historie“
+ * s ID zpráv nebo vláken z Gmailu (libovolně oddělená). Skript každých 5 minut stáhne přílohy celých vláken do „prilohy/historie“
  * a hotový soubor přesune do koše. Agent tím nic jiného než stažení příloh nespustí.
  */
 function zpracujFrontu() {
@@ -182,8 +182,12 @@ function zpracujFrontu() {
     for (const id of ids) {
       if (Date.now() - start > MAX_BEH_MS) { zbyva.push(id); continue; }
       try {
-        const zprava = GmailApp.getMessageById(id);
-        if (zprava) ulozZpravu_(hist, zprava.getThread(), zprava);
+        const zprava = GmailApp.getMessageById(id);     // ID zprávy i ID vlákna (= ID první zprávy)
+        if (!zprava) continue;
+        const vlakno = zprava.getThread();
+        for (const m of vlakno.getMessages()) {          // celé vlákno, kromě vlastních odeslaných
+          if (m.getFrom().toLowerCase().indexOf(VLASTNI_ADRESA) === -1) ulozZpravu_(hist, vlakno, m);
+        }
       } catch (e) { /* neexistující nebo nedostupná zpráva – přeskočit */ }
     }
     if (zbyva.length) fronta.createFile(f.getName(), zbyva.join('\n'), MimeType.PLAIN_TEXT);
