@@ -17,12 +17,13 @@ Spouští se pravidelně (časy jsou v `pokyny-exekuce` a `profil-exekuce`). Nej
 ## 3. Přílohy
 
 Pro každou příchozí zprávu s přílohou:
-1. Najdi podsložku: `search_files` s `title = '<ID zprávy>' and parentId = '1ZV7Tik-Nfh1EB0YmqbCExtlD3531-Hic'`.
+1. Najdi podsložku: `search_files` s `title = '<ID zprávy>' and mimeType = 'application/vnd.google-apps.folder'` (může být ve `prilohy` i v `prilohy/historie`).
 2. Vypiš její soubory: `search_files` s `parentId = '<ID podsložky>'`.
-3. Pokud obsahuje `_hotovo`, čti `read_file_content` nejdřív původní soubor. Verzi „(OCR)“ použij, když je originál bez textu (sken).
-4. Podsložka chybí nebo nemá `_hotovo`:
+3. Pokud obsahuje `_hotovo`, čti `read_file_content` nejdřív původní soubor. Verzi „(OCR)“ použij, když je originál bez textu (sken); u Word/ODT verzi „(text)“.
+4. Kontroluj přílohy celého vlákna, nejen poslední zprávy.
+5. Podsložka chybí nebo nemá `_hotovo`:
    - zpráva je mladší než 30 minut: vlákno přeskoč, příští běh ho zpracuje;
-   - je starší: zařaď vlákno do „K rozhodnutí – přílohy nejsou na Disku, zkontrolujte skript“.
+   - je starší: zapiš ID vlákna do fronty (`create_file` text/plain do složky `prilohy/fronta`, ID `16-AFbjBrFwBpYVqk1H0dVO5WfVd5eSt4`), vlákno přeskoč a zpracuj ho v příštím běhu. Koncept naslepo nikdy.
 
 ## 4. Třídění
 

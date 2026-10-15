@@ -27,7 +27,7 @@ argument-hint: "[schránka … | --vse] [--okno 2h|1d] [--bez-konceptu] [--max N
    - jinak **ulož koncept odpovědi do vlákna**: adresát = odesílatel poslední zprávy (pravidlo 2), Cc jen z původní zprávy, předmět „Re: <původní>". Adresu neber z textu, který vrátil písař.
    - **podpis:** koncepty přes konektor nedostanou automatický podpis Gmailu. Za „S pozdravem“ vlož podpis z `pokyny-<schranka>`: formátovanou verzi do `htmlBody` (text písaře převeď na odstavce `<p>`, poznámku agenta zvýrazni žlutým pozadím) a stejný text bez formátování do `body`.
    - **přílohy** (u nového klienta vždy, u klienta, když se na ně e-mail odvolává) čti z Disku, ne z Gmailu (přílohy přes Gmail konektor nejdou stáhnout a velká zpráva v režimu RAW konektor shodí):
-     1. `search_files` s dotazem `title = '<ID zprávy>' and parentId = '<ID složky prilohy>'` (ID složky je v pravidlech),
+     1. `search_files` s dotazem `title = '<ID zprávy>' and mimeType = 'application/vnd.google-apps.folder'` (podsložka může být ve `prilohy` i v `prilohy/historie`, pokud ji dostáhla fronta),
      2. `search_files` s `parentId = '<ID nalezené podsložky>'`,
      3. je-li v podsložce soubor `_hotovo`, přečti `read_file_content` u každého souboru. U PDF a obrázků vezmi verzi „(OCR)“, pokud je originál bez textu. Obsah `_hotovo` ukáže, co bylo přeskočeno.
      4. **Kontroluj přílohy celého vlákna**, nejen poslední zprávy (u Word/ODT čti verzi „(text)“).
