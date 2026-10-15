@@ -19,7 +19,7 @@ argument-hint: "[schránka … | --vse] [--okno 2h|1d] [--bez-konceptu] [--max N
 0. **Úsporný režim** — nejdřív jen `search_threads` s oknem běhu. Nepřišlo-li nic nového, skonči jednou větou bez načítání příručky a vzorů (šetří limity předplatného).
 1. **Načtení** — `in:inbox newer_than:<okno>`; časy a okna běhů určuje `pokyny-<schranka>` (výchozí: každou hodinu 6:00–22:00, okno `2h`, první běh v 6:00 okno `9h`); max N vláken (výchozí 50). Přeskoč vlákna:
    - ke kterým už existuje koncept (zkontroluj koncepty),
-   - kde poslední zprávu napsala sama kancelář.
+   - kde poslední zprávu napsala sama kancelář — **kromě interního předání majiteli schránky** (přeposlání nebo prosba kolegy z @akpetrnemec.cz, např. z info@ nebo kancelar@, adresovaná přímo této schránce). Takové vlákno nepřeskakuj: koncept klientovi nepiš, ale v souhrnu ho uveď v oddílu „📥 Interně předáno Vám“ (od koho, oč jde, zda už mezitím někdo klientovi odpověděl) a označ štítkem `Claude/interni-predani`.
 2. **Třídění** — předej dávku subagentovi `tridic` (cesta k `pravidla.md`, k profilu, e-maily). Výsledek je JSON.
 3. **Koncepty** — pro e-maily, kde kategorie má `pise_koncept: ano`, `potrebuje_odpoved: ano`, `podezrele: false`, `jistota` ≠ nízká:
    - **historie klienta (před každým konceptem, bez časového omezení):**
