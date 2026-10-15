@@ -18,7 +18,7 @@ Vše trvalé je ve složce **„Claude – pošta"** na Google Disku majitele (I
 | `navrhy-<schranka>` | obsahové návrhy z učení, čekají na schválení |
 | `metriky-<schranka>` | úspěšnost konceptů po dnech |
 | `beh-<schranka>-<RRRR-MM-DD-HHMM>` | záznam běhu: ID vláken a texty konceptů (pro ladění) |
-| složka `prilohy` (ID `1eVyWiME-0gVnUdUYli82LXrk-83Oz2sP`) | přílohy e-mailů, podsložka = ID zprávy; ukládá je skript „Přílohy pro agenta“ (`../../apps-script/`), po 90 dnech je maže; agent do ní nezapisuje |
+| složka `prilohy` (ID `1eVyWiME-0gVnUdUYli82LXrk-83Oz2sP`) | přílohy e-mailů, podsložka = ID zprávy; ukládá je skript „Přílohy pro agenta“ (`../../apps-script/`), po 90 dnech je maže; agent do ní nezapisuje, kromě podsložky `fronta` (ID `1TTzFKHAa_r7nQl0HeRMX8deIH9NStNO_`): textový soubor s ID vláken, jejichž přílohy skript dostáhne do `historie` |
 
 - Čtení: `search_files` (`parentId = '12dGA5ADKtIL_KZqWAOdcW7AamMAdgUJb' and title contains '…'`) → `read_file_content`. Existuje-li víc verzí se stejným názvem, platí **nejnovější podle `modifiedTime`**.
 - Zápis: konektor Disku obsah souborů nepřepisuje — nová verze = nový soubor se stejným názvem (starší zůstane jako historie).
