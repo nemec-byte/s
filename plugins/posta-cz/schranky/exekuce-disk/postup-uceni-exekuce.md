@@ -29,6 +29,21 @@ Konektor Disku obsah nepřepisuje: nová verze = nový dokument se stejným náz
 6. **Metriky:** doplň řádek dne do `metriky-exekuce` (počty podle bodu 2, podle kategorií).
 7. **Výstup běhu:** jedna až tři věty (kolik konceptů vyhodnoceno, kolik nových lekcí, kolik návrhů čeká). Když je nový návrh obsahový a týká se peněz, lhůt nebo odmítání klientů, uveď ho výslovně.
 
+## Naléhavé návrhy (varianta B – schválil Petr 15. 10. 2026)
+
+Obsahový návrh je **naléhavý**, když se týká peněz (sazby, zálohy, platby), odmítání nebo přebírání klientů, lhůt nebo rozporu s tvrdými pravidly. Naléhavý návrh:
+- uveď hned ve výstupu denního běhu učení (první řádek „⚠️ Naléhavý návrh: …“ + odkaz na `navrhy-exekuce`),
+- do `lekce-exekuce` přidej dočasnou pojistku „u <situace> dej do poznámky agenta OVĚŘTE: <čeho se návrh týká>“, dokud Petr nerozhodne,
+- ostatní návrhy počkají na pondělní souhrn.
+
+## Jak Petr rozhoduje
+
+Dokument `navrhy-exekuce` má u každého návrhu řádek **„Rozhodnutí: “** (prázdný). Petr do něj napíše „ano“, „ne“ nebo vlastní úpravu, případně připojí komentář. Na začátku každého běhu učení přečti nejnovější `navrhy-exekuce` i s komentáři (`read_file_content` s `includeComments: true`):
+- **ano / úprava** → zapiš do příslušného dokumentu (`pokyny-exekuce`, `profil-exekuce`, `vzory-exekuce-*`, `prirucka-stylu-exekuce`) jako novou verzi a odstraň dočasnou pojistku z lekcí,
+- **ne** → označ návrh jako zamítnutý (nenavrhuj ho znovu) a odstraň pojistku,
+- prázdné → nech čekat.
+Novou verzi `navrhy-exekuce` vždy vytvoř tak, aby Petrova už vyplněná rozhodnutí zůstala zachovaná.
+
 ## Týdenní souhrn (`--tyden`, pondělí ráno)
 
 ```
