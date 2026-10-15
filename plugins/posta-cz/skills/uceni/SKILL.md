@@ -23,7 +23,7 @@ Konektor Disku obsah nepřepisuje: nová verze = nový dokument se stejným náz
 1. **Koncepty k vyhodnocení:** záznamy `beh-<schranka>-*` za posledních 7 dní. Ke každému konceptu znáš ID vlákna, čas vytvoření a text. Vyhodnocuj jen ty, které ještě nejsou v `metriky-<schranka>` jako uzavřené.
 2. **Najdi skutečnost:** `get_thread` (`PLAIN_TEXT`). Odpověď kanceláře = první zpráva z @akpetrnemec.cz (u exekuce@ ze schránky exekuce@) **po** čase konceptu. Klasifikuj:
    - **beze změny** – text těla se shoduje (po odstranění poznámky agenta, podpisu, citace původní zprávy) téměř úplně,
-   - **upraveno** – stejná kostra, změněné věty,
+   - **upraveno** – stejná kostra, změněné věty (u variant `{{A || B}}` zapiš, kterou Petr ponechal – po 2 shodných volbách v téže situaci vznikne stylová lekce „v situaci X piš rovnou variantu A“; obsahové volby jdou do návrhů),
    - **přepsáno** – odeslán jiný text,
    - **nepoužito** – 3 pracovní dny bez odpovědi kanceláře a koncept už v `list_drafts` není,
    - **čeká** – koncept stále v konceptech, odpověď zatím není (zkontroluješ zítra).
