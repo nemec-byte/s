@@ -14,6 +14,9 @@ Vše trvalé je ve složce **„Claude – pošta"** na Google Disku majitele (I
 | `novy-klient-postup` | postup a checklisty podkladů pro nové klienty |
 | `vzory-<schranka>-<kategorie>` | anonymizované vzorové odpovědi |
 | `ladeni-<schranka>-<RRRR-MM-DD>` | návrhy z týdenního ladění |
+| `lekce-<schranka>` | naučené stylové lekce z porovnání konceptů s odeslanými odpověďmi (zapisuje `/posta-cz:uceni`) |
+| `navrhy-<schranka>` | obsahové návrhy z učení, čekají na schválení |
+| `metriky-<schranka>` | úspěšnost konceptů po dnech |
 | `beh-<schranka>-<RRRR-MM-DD-HHMM>` | záznam běhu: ID vláken a texty konceptů (pro ladění) |
 | složka `prilohy` (ID `1eVyWiME-0gVnUdUYli82LXrk-83Oz2sP`) | přílohy e-mailů, podsložka = ID zprávy; ukládá je skript „Přílohy pro agenta“ (`../../apps-script/`), po 90 dnech je maže; agent do ní nezapisuje |
 

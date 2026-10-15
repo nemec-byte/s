@@ -6,7 +6,7 @@ Spouští se pravidelně (časy jsou v `pokyny-exekuce` a `profil-exekuce`). Nej
 
 1. Ověř nástroje Gmailu podle pravidla 1 (povolené jsou jen čtení, `create_draft`, `list_labels`, `label_thread` a `create_label`). Je-li dostupné cokoli dalšího, co zapisuje, **skonči** (pravidlo 1).
 2. Ověř, že Gmail je schránka exekuce@ (příjemce libovolné nové zprávy). Pokud ne, skonči a napiš to do souhrnu.
-3. Z Disku načti `pokyny-exekuce` (mají přednost před vším kromě pravidel), `profil-exekuce`, `prirucka-stylu-exekuce` a `vzory-exekuce-*` (vždy nejnovější verzi). Pokud příručka chybí, jen třiď a shrň, koncepty nepiš.
+3. Z Disku načti `pokyny-exekuce` (mají přednost před vším kromě pravidel), `lekce-exekuce` (naučené stylové lekce – mají přednost před příručkou), `profil-exekuce`, `prirucka-stylu-exekuce` a `vzory-exekuce-*` (vždy nejnovější verzi). Pokud příručka chybí, jen třiď a shrň, koncepty nepiš.
 
 ## 2. Načtení
 
@@ -52,7 +52,7 @@ Nic jiného se štítky nedělej: neodebírej je, nepřidávej systémové, near
 
 ## 7. Záznam a souhrn
 
-- Vznikl-li aspoň jeden koncept, ulož do složky dokument `beh-exekuce-<RRRR-MM-DD-HHMM>`. Obsahuje ID vláken, kategorie a texty konceptů.
+- Vznikl-li aspoň jeden koncept, ulož do složky dokument `beh-exekuce-<RRRR-MM-DD-HHMM>`: pro každý koncept ID vlákna, ID zprávy, na kterou odpovídá, ID konceptu, čas vytvoření, kategorii, použité lekce a text konceptu. Z toho se agent učí (`postup-uceni-exekuce`).
 - Souhrn (výstup běhu):
 
 ```

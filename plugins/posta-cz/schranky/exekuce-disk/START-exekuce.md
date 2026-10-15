@@ -31,4 +31,9 @@ Vytvoř rutinu (`create_trigger`):
 - **rozvrh:** podle profilu, s časovým pásmem `CRON_TZ=Europe/Prague`, v pracovní dny;
 - **prompt:** „Běh pošty exekuce@. Ze složky na Google Disku s ID 1Md6KyBNrVxffyEyfEvaaC0JyEwN86xhs přečti dokumenty pravidla-exekuce a postup-behu-exekuce (vždy nejnovější verzi) a proveď jeden běh přesně podle nich. Nikdy nic neodesílej ani nemaž, jen vytvářej koncepty.“
 
-Potom Petrovi potvrď, kdy proběhne první běh, a zeptej se, jestli chce i týdenní ladění stylu: porovnání konceptů z `beh-exekuce-*` s tím, co tým skutečně odeslal.
+Vytvoř i **druhou rutinu – učení** (`create_trigger`):
+- každé spuštění v nové relaci; konektory Gmail, Google Drive;
+- rozvrh: pracovní dny v 5:40, `CRON_TZ=Europe/Prague 40 5 * * 1-5`;
+- prompt: „Učení pošty exekuce@. Ze složky na Google Disku s ID 1Md6KyBNrVxffyEyfEvaaC0JyEwN86xhs přečti pravidla-exekuce, pokyny-exekuce a postup-uceni-exekuce (vždy nejnovější verzi) a proveď denní běh učení. V pondělí navíc týdenní souhrn. Do pošty nic nezapisuj.“
+
+Potom Petrovi potvrď, kdy proběhne první běh pošty a první běh učení.
