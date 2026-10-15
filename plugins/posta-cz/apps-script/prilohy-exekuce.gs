@@ -217,7 +217,8 @@ function uklid_(koren) {
   const it = koren.getFolders();
   while (it.hasNext()) {
     const s = it.next();
-    if (s.getName() !== 'historie' && s.getName() !== 'fronta' && s.getDateCreated().getTime() < hranice) s.setTrashed(true);
+    if (s.getName() === 'historie') uklid_(s);       // dostažené přílohy z fronty mají stejnou retenci
+    else if (s.getName() !== 'fronta' && s.getDateCreated().getTime() < hranice) s.setTrashed(true);
   }
 }
 
