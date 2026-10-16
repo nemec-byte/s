@@ -52,6 +52,8 @@ Novou verzi `navrhy-<schranka>` vždy vytvoř tak, aby Petrova už vyplněná ro
 
 ## Týdenní souhrn (`--tyden`, pondělí ráno)
 
+V pondělí po týdenním souhrnu učení **přečti a proveď i `../pozorovatel-procesu/SKILL.md`** (pozorování procesů a návrhy nových funkcí; od 19. 10. 2026, návrhy nejdřív 9. 11. 2026) a jeho výstup připoj k souhrnu.
+
 ```
 Učení agenta — [schránka] — týden [od–do]
 Koncepty: N · beze změny X % · upraveno Y % · přepsáno Z % · nepoužito W %  (minulý týden: …)

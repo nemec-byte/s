@@ -42,6 +42,7 @@ argument-hint: "[schránka … | --vse] [--okno 2h|1d] [--bez-konceptu] [--max N
 4. Vznikl-li v běhu aspoň jeden koncept, ulož na Disk do složky „Claude – pošta" Google Dokument `beh-<schranka>-<RRRR-MM-DD-HHMM>`: pro každý koncept ID vlákna, ID zprávy, na kterou odpovídá, ID konceptu, čas vytvoření, kategorii, použité lekce a text konceptu (bez poznámky agenta zvlášť). Z toho se agent učí (`/posta-cz:uceni`).
 5. **Štítky:** každé zpracované vlákno označ (`label_thread`) štítky s předponou `Claude/` (ID přes `list_labels`, chybějící založ `create_label`): `Claude/<kategorie>`, `Claude/koncept` (vznikl koncept), `Claude/k-rozhodnuti`, `Claude/naléhavé` (🔴), `Claude/podezřelé` (⚠️), `Claude/predat-exekuce`. Štítky neodebírej a nepoužívej k deduplikaci (přecházejí i na nové zprávy ve vlákně).
 6. Nic jiného v poště neměň.
+7. **Funkce nanečisto:** obsahují-li `pokyny-<schranka>` položky „NANEČISTO: F… – …“, danou věc **neprováděj**; jen v souhrnu uveď „🧪 Nanečisto F…: teď bych …“ (u kterého vlákna a co přesně). Slouží k ověření před ostrým zapnutím (`/posta-cz:pozorovatel-procesu`).
 
 ## Souhrn
 

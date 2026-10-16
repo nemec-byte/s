@@ -17,6 +17,9 @@ Vše trvalé je ve složce **„Claude – pošta"** na Google Disku majitele (I
 | `lekce-<schranka>` | naučené stylové lekce z porovnání konceptů s odeslanými odpověďmi (zapisuje `/posta-cz:uceni`) |
 | `navrhy-<schranka>` | obsahové návrhy z učení, čekají na schválení |
 | `metriky-<schranka>` | úspěšnost konceptů po dnech |
+| `pozorovani-<schranka>` | týdenní pozorování procesů (zapisuje `/posta-cz:pozorovatel-procesu`) |
+| `navrhy-funkci-<schranka>` | návrhy nových funkcí a oprávnění agenta, čekají na Petrovo rozhodnutí |
+| `nanecisto-<schranka>` | výsledky zkušebního režimu schválených funkcí |
 | `beh-<schranka>-<RRRR-MM-DD-HHMM>` | záznam běhu: ID vláken a texty konceptů (pro ladění) |
 | složka `prilohy` (ID `1eVyWiME-0gVnUdUYli82LXrk-83Oz2sP`) | přílohy e-mailů, podsložka = ID zprávy; ukládá je skript „Přílohy pro agenta“ (`../../apps-script/`), po 90 dnech je maže; agent do ní nezapisuje, kromě podsložky `fronta` (ID `1TTzFKHAa_r7nQl0HeRMX8deIH9NStNO_`): textový soubor s ID vláken, jejichž přílohy skript dostáhne do `historie` |
 
